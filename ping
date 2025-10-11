@@ -22,25 +22,38 @@ class GameSprite(sprite.Sprite):
         window.blit(self.image,(self.rect.x, self.rect.y))
 
 class Player(GameSprite):
-    def update(self):
+    def update_l(self):
         keys_pressed = key.get_pressed()
         if keys_pressed[K_w] and self.rect.y > 5:
             self.rect.y -= self.speed
         if keys_pressed[K_s] and self.rect.y < width -80:
             self.rect.y += self.speed
-    def update(self):
-        keys_pressed = key.get_pressed()
-        if keys_pressed[K_UP] and self.rect.y > 5:
+    def update_r(self):
+        keys = key.get_pressed()
+        if keys[K_UP] and self.rect.y > 5:
             self.rect.y -= self.speed
-        if keys_pressed(K_DOWN) and self.rect.y < width -80:
+        if keys[K_DOWN] and self.rect.y < width -80:
             self.rect.y += self.speed
 
+
+player1 = Player("racket.png", 5, height -320, 40, 150, 20)
+player2 = Player("racket.png", 650, height -320, 40, 150, 20)
 run = True
 finish = False
+
 while run:
     for e in event.get():
         if e.type == QUIT:
             run = False
+            
+    if finish != True:
+        window.fill(back)
+
+        player1.update_l()
+        player2.update_r()
+    
+        player1.reset()
+        player2.reset()
 
     display.update()
     time.delay(50)
