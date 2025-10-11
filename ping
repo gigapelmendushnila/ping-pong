@@ -38,6 +38,7 @@ class Player(GameSprite):
 
 player1 = Player("racket.png", 5, height -320, 40, 150, 20)
 player2 = Player("racket.png", 650, height -320, 40, 150, 20)
+tenis_ball = GameSprite("tenis_ball.png", 320, height -280, 50,50, 0)
 run = True
 finish = False
 
@@ -51,9 +52,12 @@ while run:
 
         player1.update_l()
         player2.update_r()
-    
+
+            
         player1.reset()
         player2.reset()
+        tenis_ball.reset()
 
     display.update()
     time.delay(50)
+
