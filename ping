@@ -41,6 +41,8 @@ player2 = Player("racket.png", 650, height -320, 40, 150, 20)
 tenis_ball = GameSprite("tenis_ball.png", 320, height -280, 50,50, 0)
 run = True
 finish = False
+speed_x = 3
+speed_y = 3
 
 while run:
     for e in event.get():
@@ -48,6 +50,10 @@ while run:
             run = False
             
     if finish != True:
+        tenis_ball.rect.x += speed_x
+        tenis_ball.rect.y += speed_y
+        
+        
         window.fill(back)
 
         player1.update_l()
@@ -60,4 +66,3 @@ while run:
 
     display.update()
     time.delay(50)
-
