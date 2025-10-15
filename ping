@@ -43,7 +43,7 @@ run = True
 finish = False
 speed_x = 3
 speed_y = 3
-
+win_height = height
 while run:
     for e in event.get():
         if e.type == QUIT:
@@ -52,8 +52,7 @@ while run:
     if finish != True:
         tenis_ball.rect.x += speed_x
         tenis_ball.rect.y += speed_y
-        
-        
+    
         window.fill(back)
 
         player1.update_l()
@@ -63,6 +62,15 @@ while run:
         player1.reset()
         player2.reset()
         tenis_ball.reset()
+
+        if sprite.collide_rect(player2, tenis_ball):
+            speed_x *= -1
+        
+        if sprite.collide_rect(player1, tenis_ball):
+            speed_x *= -1
+        
+        if tenis_ball.rect.y > win_height-50 or tenis_ball.rect.y < 0:
+            speed_y *= -1
 
     display.update()
     time.delay(50)
