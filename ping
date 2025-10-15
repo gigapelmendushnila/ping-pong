@@ -8,6 +8,17 @@ display.set_caption("Ping-pong")
 window = display.set_mode((width, height))
 back = (125, 160, 250)
 window.fill(back)
+
+font.init()
+font = font.Font(None, 70)
+win1 = font.render(
+    "PLAYER 1 WIN!", True, (255, 215, 0)
+)
+win2 = font.render(
+    "PLAYER 2 WIN!", True, (255, 215, 0)
+)
+
+
 #Создание классов
 class GameSprite(sprite.Sprite):
     def __init__(self, player_image, player_x, player_y, size_x, size_y, player_speed):
@@ -71,6 +82,14 @@ while run:
         
         if tenis_ball.rect.y > win_height-50 or tenis_ball.rect.y < 0:
             speed_y *= -1
+
+        if tenis_ball.rect.x == 750:
+            window.blit(win1, (200, 200))
+            finish = True
+
+        if tenis_ball.rect.x == -50:
+            window.blit(win2, (200, 200))
+            finish = True
 
     display.update()
     time.delay(20)
