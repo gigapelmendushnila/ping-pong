@@ -36,13 +36,13 @@ class Player(GameSprite):
             self.rect.y += self.speed
 
 
-player1 = Player("racket.png", 5, height -320, 40, 150, 20)
-player2 = Player("racket.png", 650, height -320, 40, 150, 20)
+player1 = Player("racket.png", 5, height -320, 30, 120, 10)
+player2 = Player("racket.png", 660, height -320, 30, 120, 10)
 tenis_ball = GameSprite("tenis_ball.png", 320, height -280, 50,50, 0)
 run = True
 finish = False
-speed_x = 3
-speed_y = 3
+speed_x = 5
+speed_y = 5
 win_height = height
 while run:
     for e in event.get():
@@ -73,4 +73,4 @@ while run:
             speed_y *= -1
 
     display.update()
-    time.delay(50)
+    time.delay(20)
